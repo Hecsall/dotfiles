@@ -7,6 +7,7 @@ setopt EXTENDED_HISTORY
 setopt inc_append_history
 setopt share_history
 setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
 
 
 # History navigation - history substring search
