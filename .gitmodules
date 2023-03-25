@@ -1,0 +1,5 @@
+[submodule "private"]
+	path = private
+	url = git@github.com:Hecsall/dotfiles-private.git
+	branch = master
+	update = merge
