@@ -3,3 +3,8 @@
 	url = git@github.com:Hecsall/dotfiles-private.git
 	branch = master
 	update = merge
+[submodule "nano-highlight"]
+	path = nano-highlight
+	url = https://github.com/serialhex/nano-highlight.git
+	branch = master
+	update = merge

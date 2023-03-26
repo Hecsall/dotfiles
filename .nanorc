@@ -1,0 +1,8 @@
+include "~/.nano/nanorc.nanorc"
+include "~/.nano/python.nanorc"
+include "~/.nano/sh.nanorc"
+include "~/.nano/css.nanorc"
+include "~/.nano/html.nanorc"
+include "~/.nano/js.nanorc"
+include "~/.nano/markdown.nanorc"
+include "~/.nano/toml.nanorc"
