@@ -8,13 +8,15 @@ case "$OS_INFO" in
     # Postgresql
     export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
     export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+    # Brew
+    if [ -d "/opt/homebrew/bin" ]; then
+        export PATH="/opt/homebrew/bin:${PATH}"
+    fi
   ;;
 esac
 
-# Brew
-if [ -d "/opt/homebrew/bin" ]; then
-    export PATH="/opt/homebrew/bin:${PATH}"
-fi
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Load private profile
 if [[ -s ${PRIVATE_DOTFILES_PATH}/zsh/profile.sh ]]; then

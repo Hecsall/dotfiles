@@ -3,6 +3,7 @@
 My personal Dotfiles repository.
 
 ## Notes
+
 - This dotifles repo contains a **private git submodule** to store sensitive data.
 - [nano-highlight](https://github.com/serialhex/nano-highlight) is also added as a submodule to pull updated Nano syntax highlighting rules.
 - I use [Antigen](https://github.com/zsh-users/antigen) to pull some plugins needed for ZSH
