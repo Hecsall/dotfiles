@@ -62,7 +62,7 @@ source "$DOTFILES_PATH/zsh/history.zsh"
 source "$DOTFILES_PATH/zsh/git-prompt.zsh/git-prompt.zsh"
 source "$DOTFILES_PATH/zsh/git-prompt-theme.zsh"
 # Node.js
-# source "$DOTFILES_PATH/zsh/node.zsh"
+source "$DOTFILES_PATH/zsh/node.zsh"
 # Python
 source "$DOTFILES_PATH/zsh/python.zsh"
 # Time
