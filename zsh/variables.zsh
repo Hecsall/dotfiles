@@ -3,8 +3,6 @@
 # Disable default "Python venv" prompt to customize it later
 VIRTUAL_ENV_DISABLE_PROMPT=true
 
-OS_INFO=$(uname -a)
-
 export HSS_UP_ARROW="^[[A"
 export HSS_DOWN_ARROW="^[[B"
 
