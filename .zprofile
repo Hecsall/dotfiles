@@ -3,16 +3,19 @@ OS_INFO=$(uname -a)
 case "$OS_INFO" in
   # macOS
   *Darwin*)
-    # Python 3.9 Path
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
-    # Flutter Path
-    export PATH="/Users/simone/Documents/flutter/bin:${PATH}"
     # Postgresql
     export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
     export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+    # Python 3.12 Path
+    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
+    # Flutter Path
+    export PATH="/Users/simone/Documents/flutter/bin:${PATH}"
     # Brew
     if [ -d "/opt/homebrew/bin" ]; then
         export PATH="/opt/homebrew/bin:${PATH}"
+    fi
+    if [ -d "/opt/homebrew/sbin" ]; then
+        export PATH="/opt/homebrew/sbin:${PATH}"
     fi
   ;;
 esac
