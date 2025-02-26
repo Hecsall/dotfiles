@@ -3,6 +3,15 @@ OS_INFO=$(uname -a)
 case "$OS_INFO" in
   # macOS
   *Darwin*)
+    # Java
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"
+    PATH="${JAVA_HOME}/bin:${PATH}"
+    # Maven
+    export M2_HOME="/Users/simone/Documents/apache-maven-3.9.9"
+    PATH="${M2_HOME}/bin:${PATH}" 
+    export MAVEN_OPTS="-Xmx2048m"
+    # Sencha
+    PATH="/opt/Sencha/Cmd:$PATH"
     # Postgresql
     export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
     export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"

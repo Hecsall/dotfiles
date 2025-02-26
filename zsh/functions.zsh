@@ -55,6 +55,16 @@ function pngquant-recursive() {
     find -type f -name "*.png" -exec pngquant --quality=70-80 --ext=.png -f {} \;
 }
 
+# Optimize pdf file, requires ghostscript
+# Usage: pdfoptim file.pdf
+function pdfoptim() {
+    if [[ $# -eq 0 ]] ; then
+        echo 'Missing input PDF File.\nUsage:\n$ pdfoptim input.pdf'
+        return 0
+    fi
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${1%.*}-compressed.pdf" "$1"
+}
+
 # Rename numerically every matching file given an extension ($1 parameter).
 # Result will be a 3-digit filename (ie.: 001.jpg)
 function renumber() {
