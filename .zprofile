@@ -5,7 +5,9 @@ case "$OS_INFO" in
   *Darwin*)
     # Java
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"
-    PATH="${JAVA_HOME}/bin:${PATH}"
+    export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+    export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
+    export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include $CPPFLAGS"
     # Maven
     export M2_HOME="/Users/simone/Documents/apache-maven-3.9.9"
     PATH="${M2_HOME}/bin:${PATH}" 
@@ -14,7 +16,7 @@ case "$OS_INFO" in
     PATH="/opt/Sencha/Cmd:$PATH"
     # Postgresql
     export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-    export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+    export CPPFLAGS="-I/opt/homebrew/opt/libpq/include $CPPFLAGS"
     # Python 3.12 Path
     export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}"
     # Flutter Path
@@ -39,3 +41,7 @@ fi
 if [[ -s ${PRIVATE_DOTFILES_PATH}/zsh/profile.sh ]]; then
   source "${PRIVATE_DOTFILES_PATH}/zsh/profile.sh"
 fi
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :

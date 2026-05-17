@@ -89,6 +89,76 @@ function changeext() {
     fi
 }
 
+function convert-towebp() {
+    local recursive=false
+    if [[ "$1" == "-r" ]]; then
+        recursive=true
+        shift
+    fi
+    local quality="${1:-80}"
+    mkdir -p out
+
+    if $recursive; then
+        find . -not -path "./out/*" -type f | while IFS= read -r file; do
+            local reldir="$(dirname "$file")"
+            local dir="out/${reldir#./}"
+            mkdir -p "$dir"
+            local base="$(basename "$file")"
+            cp "$file" "$dir/$base"
+            case "$base" in
+                *.png|*.jpg|*.jpeg)
+                    local output="${base%.*}.webp"
+                    magick "$dir/$base" -quality "$quality" "$dir/$output" && rm "$dir/$base"
+                    ;;
+            esac
+        done
+    else
+        find . -maxdepth 1 -not -path "./out" -not -path "." -type f -exec cp {} out/ \;
+        cd out || return
+        for file in *.{png,jpg,jpeg}(N); do
+            [ -e "$file" ] || continue
+            output="${file%.*}.webp"
+            magick "$file" -quality "$quality" "$output" && rm "$file"
+        done
+        cd ..
+    fi
+}
+
+function convert-tojpg() {
+    local recursive=false
+    if [[ "$1" == "-r" ]]; then
+        recursive=true
+        shift
+    fi
+    local quality="${1:-90}"
+    mkdir -p out
+
+    if $recursive; then
+        find . -not -path "./out/*" -type f | while IFS= read -r file; do
+            local reldir="$(dirname "$file")"
+            local dir="out/${reldir#./}"
+            mkdir -p "$dir"
+            local base="$(basename "$file")"
+            cp "$file" "$dir/$base"
+            case "$base" in
+                *.png|*.webp)
+                    local output="${base%.*}.jpg"
+                    magick "$dir/$base" -quality "$quality" "$dir/$output" && rm "$dir/$base"
+                    ;;
+            esac
+        done
+    else
+        find . -maxdepth 1 -not -path "./out" -not -path "." -type f -exec cp {} out/ \;
+        cd out || return
+        for file in *.{png,webp}(N); do
+            [ -e "$file" ] || continue
+            output="${file%.*}.jpg"
+            magick "$file" -quality "$quality" "$output" && rm "$file"
+        done
+        cd ..
+    fi
+}
+
 # https://gist.github.com/Hecsall/f857b15ef1c97abe489c2c22d16be4c9
 function m3ugen() {
     ### - Help text
